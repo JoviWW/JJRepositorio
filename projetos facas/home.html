@@ -1,0 +1,66 @@
+<html>
+    <head>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <header>
+            <nav class="#343a40 black" role="navigation">
+                <div class="nav-wrapper container"><a id="logo-container" href="{home.php}" class="brand-logo center">FEED</a>
+                    <ul class="left">
+                        <li> Olá, {fulano!} </li>
+                    </ul>
+                    <ul class="right">
+                        <li><a href="cadastro.html" class="btn-floating grey"> <i class= "material-icons"> add_circle </i> </a> </li>
+                        <li><a href="{post.php}" class="btn-floating grey"> <i class= "material-icons"> exit_to_app </i> </a> </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <main style="margin-top: 40px;">
+
+            <div id='divpesquisa' style="width: 35%;border-radius: 15px;" class='nav-wrapper container z-depth-1'>
+
+                <form action='$servidor' method='GET'>
+					<div class='input-field'>
+					  <input style="border-radius: 15px;padding: 2px 0px 0px 12%" name='pesquisa' type='search' required>
+					  <label class='label-icon' for='search'><i class='material-icons'>search</i></label>
+					  <i class='material-icons'>close</i>
+					</div>
+					<input name='cozinheiros' type='hidden' value='true'>
+                </form>
+
+            </div>
+
+            <div class="row container">
+                <div class="row">
+                    <div style="width: 50%;margin-left: 25%;" class="col s12 m7">
+                        <div style="height:300px" class="card medium">
+                            <div class="card-image">
+                                <img src="{images/sample-1.jpg}">
+                                <span style="color:black;left:25%;padding: 24px 0px 0px 7%;" class="card-title">{Nome da faca}</span>
+                            </div>
+                            <div style="text-align:center;padding:5px 0px 0px 0px" class="card-content">
+                                <p>{$$$}</p>
+                                <p>Oferta sem lance inicial? {[SIM/NAO]}</p>
+                            </div>
+                            <div class="card-action">
+                                <a class="right" style="color:gray" href="{#}"> Acesse ➤ </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        
+
+
+    </body>
+
+</html>

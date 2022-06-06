@@ -1,0 +1,226 @@
+<html>
+
+    <head>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <div id="transp" style="opacity : 0.5;position: fixed;z-index:9998;height:100%;width:100%;background-color: rgb(0, 0, 0);"> </div>
+
+        <header>
+            <nav class="#343a40 black" role="navigation">
+                <div class="nav-wrapper container"><a id="logo-container" href="{home.php}" class="brand-logo center">Página da Faca</a>
+                    <ul class="left">
+                        <li> Olá, {fulano!} </li>
+                    </ul>
+                    <ul class="right">
+                        <li><a href="{post.php}" class="btn-floating grey"> <i class= "material-icons"> exit_to_app </i> </a> </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <main style="margin-top: 40px">
+
+            <!-- POPUP -->
+
+            
+            <div id="popup1" style="margin-top: -20px;left:19%;position: fixed;z-index:9999;height:400px;width:62%;background-color: rgb(255, 255, 255);">
+                <button style="cursor:pointer;border:none;margin: 20px;color: black;padding-top: 0;" onclick="fechar1()"class="right btn-tiny white"> <i class= "material-icons" > close </i> </button>
+                <form>
+                    <div id="content" style="margin-top: 20px; padding-left: 15%;">
+
+                        <div style=" border:solid;border-width: 1px;height: 150px;width: 45%;" class="left"> IMAGEM </div>
+    
+                        <div style="padding-left: 50%; padding-top: 5%;">
+                            <span style="font-size: 20px">Em estoque: {15}</span><br>
+                            <input style="height: 7%;font-size: 10px;width: 57%" placeholder="Quantidade para leiloar"><br>
+                            <span style="font-size: 15px">Ofertar sem lance inicial: ({valor})</span><br>
+                            <input style="height:11px;position: relative;opacity: 1;pointer-events: all;"type="checkbox" name="sim" value="sim"> Sim 
+                            <input style="height:11px;position: relative;opacity: 1;pointer-events: all;"type="checkbox" name="nao" value="nao"> Não
+                        </div>
+                        <br>
+                        <div>
+                            <textarea id="desc" style="resize: none;font-size:10px; max-width: 80%;height: 40%; word-wrap: break-word; overflow-x:auto;">  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                            </textarea><br>
+                            <div style="padding-top: 10px">
+                                <button class="btn" onclick="copiarDesc()" style="z-index:9999;border-radius: 5%;color: white;background-color:black"> Copiar descrição </button>
+                                <button type="submit" class="right btn" style="border-radius: 5%;color: white;margin-right: 20%;background-color:black"> Confirmar </button>    
+                            </div>
+                            
+                        </div>
+    
+                    </div>
+                </form>    
+            </div>
+
+            <!-- POPUP 2 -->
+
+            <div id="popup2" style="margin-top: -20px;left:19%;position: fixed;z-index:9999;height:400px;width:62%;background-color: rgb(255, 255, 255);">
+                <button style="cursor:pointer;border:none;margin: 20px;color: black;padding-top: 0;" onclick="fechar2()"class="right btn-tiny white"> <i class= "material-icons" > close </i> </button>
+                <div id="content" style="margin-top: 20px;">
+                    <div style="font-size: 25px;margin-left:10%" class="center"> Facas em leilão </div>
+
+                    <div style="width: 100%;max-height: 65%;overflow-x:hidden"> 
+
+                        <div style="width:100%">
+                            <div style="border:solid;border-width:1px;width:80%;margin-left:10%;height: 20%;"> 
+                                <div class="left"style="border:solid;border-width:1px;height: 60px;width: 60px;margin: 1.7% 2% 0% 2%;"> IMG </div>
+                                <form>
+                                    <div>
+                                        <p style="margin: 5px 0px 0px 17%;"> Processamento #01 da faca TAL </p>
+                                        <input style="font-size: 10px;width: 23%;height: 25%; margin: 5px" placeholder="Nome do comprador">
+                                        <input style="font-size: 10px;width: 16%;height: 25%; margin: 5px" placeholder="Valor da venda">
+                                        <input style="font-size: 10px;width: 23%;height: 25%; margin: 5px" placeholder="Obs (opcional)">
+                                        <ul style="margin: -2% 5% 0px 0px;" class="right">
+                                            <li> <button value="confirma" type="submit" style="cursor: pointer;border:none;background-color:white"> <i class= "tiny material-icons"> check </i> </button> </li>
+                                            <li> <button value="cancela" type="submit" style="cursor: pointer;border:none;background-color:white"> <i class= "tiny material-icons"> close </i> </button> </li>
+                                        </ul>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+    
+                        <div style="width:100%">
+                            <div style="border:solid;border-width:1px;width:80%;margin: 1% 0 0 10%;height: 20%;"> 
+                                <div class="left"style="border:solid;border-width:1px;height: 60px;width: 60px;margin: 1.7% 2% 0% 2%;"> IMG </div>
+                                <div>
+                                    <p style="margin: 5px 0px 0px 17%;"> Processamento #02 da faca TAL </p>
+                                    <input style="font-size: 10px;width: 23%;height: 25%; margin: 5px" placeholder="Nome do comprador">
+                                    <input style="font-size: 10px;width: 16%;height: 25%; margin: 5px" placeholder="Valor da venda">
+                                    <input style="font-size: 10px;width: 23%;height: 25%; margin: 5px" placeholder="Obs (opcional)">
+                                    <ul style="margin: -2% 5% 0px 0px;" class="right">
+                                        <li> <button style="cursor: pointer;border:none;background-color:white"> <i class= "tiny material-icons"> check </i> </button> </li>
+                                        <li> <button style="cursor: pointer;border:none;background-color:white"> <i class= "tiny material-icons"> close </i> </button> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="width:100%">
+                            <div style="border:solid;border-width:1px;width:80%;margin: 1% 0 0 10%;height: 20%;"> 
+                                <div class="left"style="border:solid;border-width:1px;height: 60px;width: 60px;margin: 1.7% 2% 0% 2%;"> IMG </div>
+                                <div>
+                                    <p style="margin: 5px 0px 0px 17%;"> Processamento #03 da faca TAL </p>
+                                    <input style="font-size: 10px;width: 23%;height: 25%; margin: 5px" placeholder="Nome do comprador">
+                                    <input style="font-size: 10px;width: 16%;height: 25%; margin: 5px" placeholder="Valor da venda">
+                                    <input style="font-size: 10px;width: 23%;height: 25%; margin: 5px" placeholder="Obs (opcional)">
+                                    <ul style="margin: -2% 5% 0px 0px;" class="right">
+                                        <li> <button style="cursor: pointer;border:none;background-color:white"> <i class= "tiny material-icons"> check </i> </button> </li>
+                                        <li> <button style="cursor: pointer;border:none;background-color:white"> <i class= "tiny material-icons"> close </i> </button> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="width:100%">
+                            <div style="border:solid;border-width:1px;width:80%;margin: 1% 0 0 10%;height: 20%;"> 
+                                <div class="left"style="border:solid;border-width:1px;height: 60px;width: 60px;margin: 1.7% 2% 0% 2%;"> IMG </div>
+                                <div>
+                                    <p style="margin: 5px 0px 0px 17%;"> Processamento #04 da faca TAL </p>
+                                    <input style="font-size: 10px;width: 23%;height: 25%; margin: 5px" placeholder="Nome do comprador">
+                                    <input style="font-size: 10px;width: 16%;height: 25%; margin: 5px" placeholder="Valor da venda">
+                                    <input style="font-size: 10px;width: 23%;height: 25%; margin: 5px" placeholder="Obs (opcional)">
+                                    <ul style="margin: -2% 5% 0px 0px;" class="right">
+                                        <li> <button style="cursor: pointer;border:none;background-color:white"> <i class= "tiny material-icons"> check </i> </button> </li>
+                                        <li> <button style="cursor: pointer;border:none;background-color:white"> <i class= "tiny material-icons"> close </i> </button> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+                
+            </div>
+
+            <!-- FIM DO POPUP -->
+
+            <div class="row container">
+                <div class="row">
+                    
+                    <div class="col s12">
+                        <br>
+                        <div style="box-shadow: 7px 7px 17px 0px rgb(240 240 240);height: 220px; width: 40%;" class="left"> IMAGEM </div>
+                        <div style="border-radius: 2%;height: 220px; width: 58%;" class="right"> 
+                            <h5 style="padding-left: 6%;"> Nome da faca</h5>
+                            <p style="font-size:10px;margin-left: 6%;padding-left: 1%; max-width: 98%; height: 58%; word-wrap: break-word; overflow-x:auto;">  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                            </p>
+                            <h6 style="padding-left: 6%;"> Lance inicial: R$0 </h6>
+                        </div>
+                    </div>
+                    <div style="border-radius: 2%;height: 100px;margin-top:12px;" class="col s12">
+                        <div style="width: 40%;font-size: 17px;text-align: center;" class="left"> 
+                            <form>
+                                <span style="padding-right: 6px ;">Em estoque: {15}</span>
+                                <input style="text-align:center;font-size: 14px; height:20px;width: 14%;" placeholder="valor">
+                                <button class="btn-floating btn-small grey"  type="submit"> <i style="font-size: 15px" class= "small material-icons"> add </i> </button>
+                            </form>
+                            <button onclick="popup2()" class="btn white" style="color:black;margin-top: 12px;"> Dar baixa </button>
+                        </div>
+                        <a style="color:black;margin-left: 22%" class="btn white" href="https://drive.google.com/drive/u/0/folders/1lbcULPLUn4VzGfdR6ArtvmkbD2PT_xmX"> Link Google Fotos </a>
+                        <br>
+                        <br>
+                        <div onclick="popup1()" style="background-color: grey;color:black; margin-top: 12px;" class="right btn white">
+                            Leiloar ➢
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+    </body>
+
+    <script>
+
+        document.getElementById("transp").style.visibility = "hidden"
+        document.getElementById("popup1").style.visibility = "hidden"
+        document.getElementById("popup2").style.visibility = "hidden"
+
+        /// Popup do leilão /// 
+        function popup1(){
+            document.getElementById("transp").style.visibility = "visible"
+            document.getElementById("popup1").style.visibility = "visible"
+        }
+
+        function fechar1(){
+            document.getElementById("transp").style.visibility = "hidden"
+            document.getElementById("popup1").style.visibility = "hidden"
+        }
+
+        /// Popup de dar baixa /// 
+        function popup2(){
+            document.getElementById("transp").style.visibility = "visible"
+            document.getElementById("popup2").style.visibility = "visible"
+        }
+
+        function fechar2(){
+            document.getElementById("transp").style.visibility = "hidden"
+            document.getElementById("popup2").style.visibility = "hidden"
+        }
+
+        function copiarDesc() {
+
+            let desc = document.getElementById("desc")
+            desc.select();
+            desc.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            alert("Texto copiado.");
+
+        }
+    </script>
+
+</html>
