@@ -1,11 +1,14 @@
 DROP SCHEMA IF EXISTS leilaofaca;
 CREATE SCHEMA IF NOT EXISTS leilaofaca DEFAULT CHARACTER SET utf8 ;
 USE leilaofaca ;
+
+
 CREATE TABLE IF NOT EXISTS usuario(
 codigo INT PRIMARY KEY AUTO_INCREMENT NOT NULL ,
 admin BOOL NOT NULL DEFAULT FALSE ,
 login VARCHAR( 55 ) NOT NULL ,
-senha VARCHAR( 100 ) NOT NULL
+senha VARCHAR( 100 ) NOT NULL,
+nome VARCHAR( 55 ) NOT NULL
 );
 
 
@@ -17,7 +20,13 @@ lanceInicial FLOAT NOT NULL ,
 nome TEXT NOT NULL ,
 descricao TEXT,
 img TEXT,
-linkFotos TEXT
+linkFotos TEXT,
+tipofaca INT,
+CONSTRAINT fk_tipofaca
+    FOREIGN KEY (tipofaca)
+    REFERENCES tipofaca(codigo)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION 
 );
 
 CREATE TABLE IF NOT EXISTS operacao(
@@ -26,9 +35,10 @@ data_inicioBaixa TIMESTAMP DEFAULT CURRENT_TIMESTAMP( ) ,
 data_finalBaixa TIMESTAMP,
 comprador varchar(65),
 valorFinal FLOAT NOT NULL ,
+observacao TEXT,
 codigoFaca INT NOT NULL,
 codigoUsuario INT NOT NULL,
-quantidade INT,
+concluida BOOL DEFAULT FALSE,
     CONSTRAINT fk_vendedor
     FOREIGN KEY (codigoUsuario)
     REFERENCES usuario(codigo)
@@ -39,6 +49,12 @@ quantidade INT,
     REFERENCES faca(codigo)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+CREATE TABLE IF NOT EXISTS tipofaca(
+   codigo INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nome VARCHAR(55));
+
+
 DELIMITER $$
 CREATE PROCEDURE FinalizarBaixa(IN codigoBaixa int)
 BEGIN
