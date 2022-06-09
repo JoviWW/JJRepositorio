@@ -39,6 +39,7 @@ observacao TEXT,
 codigoFaca INT NOT NULL,
 codigoUsuario INT NOT NULL,
 concluida BOOL DEFAULT FALSE,
+planceinicial BOOL DEFAULT TRUE,
     CONSTRAINT fk_vendedor
     FOREIGN KEY (codigoUsuario)
     REFERENCES usuario(codigo)
@@ -54,10 +55,3 @@ CREATE TABLE IF NOT EXISTS tipofaca(
    codigo INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nome VARCHAR(55));
 
-
-DELIMITER $$
-CREATE PROCEDURE FinalizarBaixa(IN codigoBaixa int)
-BEGIN
-UPDATE operacao SET data_finalBaixa = CURRENT_TIMESTAMP() WHERE codigo = codigoBaixa;
-END $$
-DELIMITER ;
