@@ -21,6 +21,7 @@ nome TEXT NOT NULL ,
 descricao TEXT,
 img TEXT,
 linkFotos TEXT,
+permitir_planceinicial BOOL NOT NULL;
 tipofaca INT,
 CONSTRAINT fk_tipofaca
     FOREIGN KEY (tipofaca)
