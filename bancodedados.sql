@@ -22,12 +22,7 @@ descricao TEXT,
 img TEXT,
 linkFotos TEXT,
 permitir_planceinicial BOOL NOT NULL,
-tipofaca INT,
-CONSTRAINT fk_tipofaca
-    FOREIGN KEY (tipofaca)
-    REFERENCES tipofaca(codigo)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION 
+tipofaca INT
 );
 
 CREATE TABLE IF NOT EXISTS operacao(
