@@ -22,7 +22,8 @@ descricao TEXT,
 img TEXT,
 linkFotos TEXT,
 permitir_planceinicial BOOL NOT NULL,
-tipofaca INT
+tipofaca INT, 
+custo INT
 );
 
 CREATE TABLE IF NOT EXISTS operacao(
