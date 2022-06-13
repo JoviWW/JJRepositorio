@@ -18,7 +18,7 @@
         $login_pesquisa = $row['login'];
         $codigo_pesquisa = $row['codigo'];
         echo "<div class='row container'> 
-            <form class='col s12' action='/facas/telas/perfil.php' method='POST'>
+            <form class='col s12' action='../telas/perfil.php' method='POST'>
                 
                 <h4 align='center'> Editar usuário $login_pesquisa </h4>
                 
