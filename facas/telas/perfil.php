@@ -66,7 +66,7 @@
                     <div style='display:flex;justify-content:center;'>
                         <input autocomplete='on' name='pesquisa' id='select' style='text-align:center' type='list' list='opcoes' placeholder='Selecione o usuário'>
                         <datalist id='opcoes'>";
-                        $sql = "SELECT * FROM usuario";
+                        $sql = "SELECT * FROM usuario where codigo != $id_usuario";
                         $resultado = mysqli_query($connect,$sql);
                         while ($row = mysqli_fetch_assoc($resultado)):
 

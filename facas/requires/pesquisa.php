@@ -10,7 +10,7 @@
     $tratativa = mysqli_fetch_assoc($resultado);
     $excecao = $tratativa['login'];
 
-    $sql = "SELECT * FROM usuario WHERE login = '$login_pesquisa' AND login != '$excecao'";
+    $sql = "SELECT * FROM usuario WHERE login = '$login_pesquisa'";
     $resultado = mysqli_query($connect,$sql);
 
     if(mysqli_num_rows($resultado)>0):
@@ -38,7 +38,12 @@
                 Editar  <i class='material-icons right'>send</i> </button>
             </form>";
     else:
+         if($login_pesquisa == $excecao):
         echo "<div style='display:flex;justify-content:center'> <p style='color:red'> Você está procurando por si mesmo! </p> </div>";
+        else:
+            echo "<div style='display:flex;justify-content:center'> <p style='color:red'> Login digitado inválido! </p> </div>";
+        
+    endif;
     endif;
 
 ?>
