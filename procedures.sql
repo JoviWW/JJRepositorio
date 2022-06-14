@@ -1,10 +1,10 @@
 DELIMITER $
-CREATE PROCEDURE `ColocarEmLeilao`(IN `quantidade` INT, IN `incodigofaca` INT, IN `incodigousuario` INT)
+CREATE PROCEDURE `ColocarEmLeilao`(IN `quantidade` INT, IN `incodigofaca` INT, IN `incodigousuario` INT, IN `inplanceinicial` tinyint)
 BEGIN
 DECLARE contador INT DEFAULT 0;
 loop_t: LOOP
     SET contador = contador + 1;
-	INSERT INTO operacao(codigofaca,codigousuario) VALUES (incodigofaca,incodigousuario);
+	INSERT INTO operacao(codigofaca,codigousuario,planceinicial) VALUES (incodigofaca,incodigousuario,inplanceinicial);
 	UPDATE faca SET estoquedisponivel = estoquedisponivel-1 where codigo = incodigofaca;
 	UPDATE faca SET estoqueprocessamento = estoqueprocessamento+1 where codigo = incodigofaca;
     IF contador >= quantidade THEN
@@ -26,5 +26,5 @@ DELIMITER $
 CREATE PROCEDURE `getEstoqueEmProcessamentoUsuario`(IN `incodigofaca` INT, IN `inusuario` INT)
 BEGIN
 Select count(*) as "EstoqueProcessamento" from operacao where concluida = 0 and codigofaca = incodigofaca and codigousuario = inusuario;
-END
+END $
 DELIMITER ;
