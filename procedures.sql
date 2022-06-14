@@ -23,8 +23,16 @@ END $
 DELIMITER ;
 
 DELIMITER $
+CREATE PROCEDURE `getEstoqueEmProcessamentoUsuario`(IN `incodigofaca` INT, IN `inusuario` INT)
+BEGIN
+Select count(*) as "EstoqueProcessamento" from operacao where concluida = 0 and codigofaca = incodigofaca and codigousuario = inusuario;
+END $
+DELIMITER ;
+
+DELIMITER $
 CREATE PROCEDURE `getFacasEmProcessamentoUsuario`(IN `incodigofaca` INT, IN `inusuario` INT)
 BEGIN
 Select * from operacao where concluida = 0 and codigofaca = incodigofaca and codigousuario = inusuario;
 END $
 DELIMITER ;
+
