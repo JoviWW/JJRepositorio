@@ -34,7 +34,7 @@
 
     </head>
 	
-	<main>
+	<main style="margin-top: 100px">
 		<div class="row container">
 			<form class="col s12" action= "<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 				

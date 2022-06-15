@@ -6,21 +6,30 @@
     $resultados = Array();
 
     if(isset($_POST['nome'])):
-        $nome =  $_POST['nome'];
-        $sql = "UPDATE usuario SET nome = '$nome' WHERE codigo = $id_usuario_editar";
-        $resultado = mysqli_query($connect,$sql);
-        $resultados[] = $resultado;
+        if($_POST['nome'] != ""):
+            $nome =  $_POST['nome'];
+            $sql = "UPDATE usuario SET nome = '$nome' WHERE codigo = $id_usuario_editar";
+            $resultado = mysqli_query($connect,$sql);
+            $resultados[] = "Nome alterado com sucesso!";
+        endif;
     endif;
 
     if(isset($_POST['senha'])):
-        $senha = md5($_POST['senha']);
-        $sql = "UPDATE usuario SET senha = '$senha' WHERE codigo = $id_usuario_editar";
-        $resultado = mysqli_query($connect,$sql);
-        $resultados[] = $resultado;
+        if($_POST['senha'] != ""):
+            $senha = md5($_POST['senha']);
+            $sql = "UPDATE usuario SET senha = '$senha' WHERE codigo = $id_usuario_editar";
+            $resultado = mysqli_query($connect,$sql);
+            $resultados[] = "Senha alterada com sucesso!";
+        endif;
     endif;
 
-    if ($resultados[0] && $resultados[1]):
-        echo "<script>alert('Edições realizadas com sucesso!');</script>";
+    if (count($resultados) == 2):
+        echo "<script>alert('Nome e Senha alterados com sucesso!');</script>";
+    elseif(count($resultados) == 1):
+        $print = $resultados[0];
+        echo "<script>alert('$print');</script>";
+    else: 
+        echo "<script>alert('Nenhuma alteração feita');</script>";
     endif;
 
 ?>

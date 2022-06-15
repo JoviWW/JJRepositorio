@@ -29,6 +29,10 @@
                 img {
                     height: 50%;
                 }
+
+                #flutuante{
+                    margin-left: 100px;
+                }
                 
                 .lul {
                     height: 350px !important
@@ -36,8 +40,9 @@
             }
             
             @media only screen and (min-width: 800px) {
-                #perfil {
-                    margin-right: 18% !important;
+                #flutuante{
+                    margin-top: 20px;
+                    margin-left: 200px !important;
                 }
                 .card-content {
                     padding: 5% 0px 0px 0px;
@@ -51,125 +56,100 @@
 
         <?php include("../requires/header.php")?>
         
-        <main style="margin-top: 40px;">
+        <main style="margin-top: 100px;">
 
+        <div id="transp" style="margin-top: -100px;opacity : 0.5;position: fixed;z-index:9999;height:100%;width:100%;background-color: rgb(0, 0, 0);"> </div>
+        <?php 
+            if(isset($_SESSION['logado'])):
+                if($_SESSION['logado']):
+                    if($admin == 1):
+                            echo "<div id='popup2' style='margin-top: -60px;left:2%;position: fixed;z-index:9999;height:400px;width:95%;background-color: rgb(255, 255, 255);'>
+                            <button style='cursor:pointer;border:none;margin: 20px;color: black;padding-top: 0;' onclick='fechar2()'class='right btn-tiny white'> <i class= 'material-icons' > close </i> </button>
+                            <div id='content' style='margin-top: 20px;'>
+                                <div style='font-size: 105%;margin-left:10%' class='center'> Facas em leilão </div>
+            
+                                <div style='width: 100%;max-height: 65%;overflow-x:hidden'>
+                                <form action='../requires/darbaixa.php' method='POST'>";
+                                $resultado  = mysqli_query($connect,"CALL getFacasEmProcessamentoUsuario('$codigo_faca','$codigo_usuario')");
+                                while ($row = mysqli_fetch_assoc($resultado)):
+                                 $codigo = $row['codigo'];
+                                 $data = $row['data_inicioBaixa'];
+                                 echo "
+                                    <div style='width:100%'>
+                                        <div style='border:solid;border-width:1px;width:80%;margin-left:10%;height: 25%;'> 
+                                            <div class='left'style='border:solid;border-width:1px;height: 60px;width: 60px;margin: 1.7% 2% 0% 2%;'> <img style='width: 100%;height: 100%;' src='$img'> </div>
+                                             
+                                                <div>
+                                                    <p style='font-size: 80%;margin: 5px 0px 0px 17%;'> Processamento #$codigo ($data) </p>
+                                                    <input name='codigo_usuario' value='$codigo_usuario' style='display:none'>
+                                                    <input name='codigo_faca' value='$codigo_faca' style='display:none'>
+                                                    <input name='codigo$codigo' value='$codigo' style='display:none'>
+                                                    <input name='comprador$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Nome do comprador'>
+                                                    <input name='valor_venda$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Valor da venda'>
+                                                    <input name='obs$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Obs (opcional)'>
+                                                    <ul style='margin: 0% 5% 0px 0px;' class='right'>
+                                                        <li> <input style='position: relative;opacity: 1;pointer-events: all;' type='radio' name='baixa$codigo' value='confirma'>  <i class= 'tiny material-icons'> check </i> </li>
+                                                        <li> <input style='position: relative;opacity: 1;pointer-events: all;' type='radio' name='baixa$codigo' value='cancela'>  <i class= 'tiny material-icons'> close </i> </li>
+                                                    </ul>
+                                                </div>
+                                            
+                                        </div>
+                                    </div> ";
+                                endwhile;
+                                echo "
+                                <div style='display:flex;justify-content:center;' > 
+                                 <button type='submit' class='btn' style='border-radius: 5%;color: white;background-color:black'> Confirmar </button>
+                                 </div>
+                             </div>
+                                 
+                             </div>
+                            
+                            </form>
+                         </div>";
+                    endif;
+                endif;
+            endif;
+        ?>
+        <div name='conteudo'>
         <?php
 
             if(isset($_SESSION['logado'])):
                 if($_SESSION['logado']):
-                    echo "<div>
-                            <a id='perfil' class='btn-floating right waves-effect waves-light btn-small black' style='margin-right: 10%' href='perfil.php' ><i class='material-icons'>person</i></a>
+                    echo "<div id='flutuante'style='margin-top:-20px;margin-left: 40px;position: fixed;height: 70px;'>
+                            <ul> <a class='btn-floating right waves-effect waves-light btn-small black' style='margin-right: 10%' href='perfil.php' ><i class='material-icons'>person</i></a></ul>";
+                    if($admin == 1):
+                        echo "
+                        <br><ul><a onclick='processamentos()' class='btn-floating right waves-effect waves-light btn-small black' style='margin-right: 10%' ><i class='material-icons'>art_track</i></a></ul>
                         </div>";
+                    endif;
+                    echo "</div>";
+                    
                 endif;
             endif;
 
-            
-        ?>
 
+            ?>
             <div id='divpesquisa' style="width: 35%;border-radius: 15px;" class='nav-wrapper container z-depth-1'>
 
-                <form action='$servidor' method='GET'>
+                <form action="<?php echo $_SERVER['PHP_SELF']?>" method='GET'>
 					<div class='input-field'>
-					  <input style="font-size: 80%;padding: 12px 0px 10px 12% !important;border-radius: 15px;padding: 2px 0px 0px 12%" name='pesquisa' type='search' required>
-					  <label style="left: 1%;padding: 7px 0px 10px 0%;" class='label-icon' for='search'><i class='material-icons'>search</i></label>
-					  <i class='material-icons'>close</i>
+					  <input style="font-size: 80%;padding: 12px 0px 10px 25px !important;border-radius: 15px" name='pesquisa' type='search' required>
+					  <label style="left: 1%;padding: 10px 0px 10px 0%;" class='label-icon' for='search'><i style='font-size: 20px'class='material-icons'>search</i></label>
 					</div>
-					<input name='cozinheiros' type='hidden' value='true'>
                 </form>
 
             </div>
-
             <?php
-                include("../requires/conexao.php");
-
-                $sql = "SELECT * FROM faca ORDER BY estoquedisponivel DESC";
-                $resultado = mysqli_query($connect,$sql);
-                $facas = Array();
-				while ($row = mysqli_fetch_assoc($resultado)):
-					$codigo_faca_atual = $row['codigo'];
-                    $nome_faca_atual = $row['nome'];
-                    $img_faca_atual = $row['img'];
-                    $lanceInicial_faca_atual = $row['lanceInicial'];
-                    $permitir_planceinicial_faca_atual = $row['permitir_planceinicial'];
-                    if($permitir_planceinicial_faca_atual == 1):
-                        $permitir_planceinicial_faca_atual = 'SIM';
-                    else:
-                        $permitir_planceinicial_faca_atual = "NÃO";
-                    endif;
-
-                    if(isset($_SESSION['logado'])):
-                        if($_SESSION['logado']):
-                            echo "
-                                <div class='row container'>
-                                    <div class='row'>
-                                        <div style='width: 50%;margin-left: 25%;' class='col s12 m7'>
-                                            <div style='height: 470px;' class='card medium lul'>
-                                                <div class='card-image' style='max-height: 50%;'>
-                                                    <img style='max-height: 500px;'src='$img_faca_atual'>
-                                                </div>
-                                                <div style='text-align:center;padding: 5px 0px 0px 0px;' class='card-content'>
-                                                    <span style='font-size:110%;color:black;width: 100%;text-align:center;''>$nome_faca_atual</span>
-                                                    <p style='color:green'>R$$lanceInicial_faca_atual</p>
-                                                    <p style='font-size: 85%;'>Oferta sem lance inicial? $permitir_planceinicial_faca_atual </p>
-                                                </div>
-                                                <div class='card-action'>
-                                                    <a class='right' style='color:gray' href='faca.php?faca=$codigo_faca_atual'> Acesse ➤ </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                ";
-                        else:
-                            echo "
-                                <div class='row container'>
-                                    <div class='row'>
-                                        <div style='width: 50%;margin-left: 25%;' class='col s12 m7'>
-                                            <div style='height: 470px;' class='card medium lul'>
-                                                <div class='card-image' style='max-height: 50%;'>
-                                                    <img style='max-height: 50%;'src='$img_faca_atual'>
-                                                </div>
-                                                <div style='text-align:center;padding: 5% 0px 0px 0px;' class='card-content'>
-                                                    <span style='font-size:110%;color:black;width: 100%;text-align:center;''>$nome_faca_atual</span>
-                                                    <p style='font-size: 85%;'>Oferta sem lance inicial? $permitir_planceinicial_faca_atual </p>
-                                                </div>
-                                                <div class='card-action'>
-                                                    <a class='right' style='color:gray' href='faca.php?faca=$codigo_faca_atual'> Acesse ➤ </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                ";
-                        endif;
-                    else:
-                        echo "
-                        <div class='row container'>
-                            <div class='row'>
-                                <div style='width: 50%;margin-left: 25%;' class='col s12 m7'>
-                                    <div style='height: 470px;' class='card medium lul'>
-                                        <div class='card-image' style='max-height: 50%;'>
-                                            <img style='max-height: 50%;'src='$img_faca_atual'>
-                                        </div>
-                                        <div style='text-align:center;padding: 5% 0px 0px 0px;' class='card-content'>
-                                            <span style='font-size:110%;color:black;width: 100%;text-align:center;''>$nome_faca_atual</span>
-                                            <p style='font-size: 85%;'>Oferta sem lance inicial? $permitir_planceinicial_faca_atual </p>
-                                        </div>
-                                        <div class='card-action'>
-                                            <a class='right' style='color:gray' href='faca.php?faca=$codigo_faca_atual'> Acesse ➤ </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        ";
-                    endif;
-                    
-                    
-				endwhile;
+                
+                if(!$_GET):
+                    include("../requires/facas_index.php");
+                else:
+                    include("../requires/pesquisa_home.php");
+                endif;
             
             ?>
-
+        </div>
+        </div>
         </main>
         
 
@@ -177,3 +157,19 @@
     </body>
 
 </html>
+
+<script>
+    document.getElementById("transp").style.visibility = "hidden"
+    document.getElementById("popup2").style.visibility = "hidden"
+
+    /// Popup de dar baixa /// 
+    function processamentos(){
+            document.getElementById("transp").style.visibility = "visible"
+            document.getElementById("popup2").style.visibility = "visible"
+        }
+
+        function fechar2(){
+            document.getElementById("transp").style.visibility = "hidden"
+            document.getElementById("popup2").style.visibility = "hidden"
+        }
+</script>

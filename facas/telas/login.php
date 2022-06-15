@@ -16,7 +16,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta charset="utf-8">
-
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js">
@@ -28,7 +28,11 @@
 
         <header class="col s12 m6">
             <nav class="#343a40 black" role="navigation">
-                <div class="nav-wrapper container"><p style="width: 60%;font-size: 110%;" id="logo-container" href="index.php" class="brand-logo center">Sadrian - Casa de Lâminas</p>
+                <div class="nav-wrapper container">
+                    <p style="width: 60%;font-size: 110%;" id="logo-container" href="index.php" class="brand-logo center">Sadrian - Casa de Lâminas</p>
+                    <ul class='left'>
+                        <li><a style='padding:0 5px' onclick='voltar()'> <i style='font-size:20px'class= 'material-icons'> keyboard_return </i> </a> </li>
+                    </ul>
                 </div>
             </nav>
         </header>
@@ -42,7 +46,7 @@
                         <form action= "<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                             <div class="card px-5 py-5" id="form1">
                                 <div class="form-data">
-                                    <div class="forms-inputs mb-4"> <span>Email</span> <input name="login" autocomplete="off" type="text">
+                                    <div class="forms-inputs mb-4"> <span>Login</span> <input name="login" autocomplete="off" type="text">
                                     </div>
                                     <div class="forms-inputs mb-4"> <span>Senha</span> <input name="senha"autocomplete="off" type="password">
                                     </div>
@@ -64,5 +68,9 @@
 <script>
 
     document.getElementById("confirma").style.visibility = 'hidden'
+
+    function voltar(){
+        javascript:history.go(-1);
+    }
 
 </script>

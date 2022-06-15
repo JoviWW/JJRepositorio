@@ -66,7 +66,7 @@
             }
 
             #altura{
-                height:100% !important
+                height:125% !important
             }
 
         }
@@ -78,12 +78,12 @@
 
         <?php include("../requires/header.php")?>
         
-        <main style="margin-top: 19px">
+        <main style="margin-top: 100px">
 
             <form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
 
                 <div class="row container">
-                    <div id="altura" class="row" style="height: 125%;box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);">
+                    <div id="altura" class="row" style="height: 100%;box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);">
                         
                         <div class="col s12" style="margin-top: 25px;display: flex;flex-wrap: wrap;justify-content: center;">
                             <br>
@@ -98,9 +98,7 @@
                             <div id="infos-foto" class="right"> 
                                 <div id="infos-foto-ajuste"class="right">
                                 <input name="nome" style="font-size: 70%;box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);padding-left: 5%;width: 70%;" placeholder="Nome da Faca">
-                                <textarea name="descricao" style="border:none;box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);resize: none; font-size:10px; padding-left: 1%; max-width: 98%; height: 120px; word-wrap: break-word; overflow-x:auto;">  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-                                    
-                                </textarea>
+                                <textarea name="descricao" style="border:none;box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);resize: none; font-size:10px; padding-left: 1%; max-width: 98%; height: 120px; word-wrap: break-word; overflow-x:auto;"></textarea>
                                 <input name="tipo" style="font-size: 70%;margin-top: 8px;box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);padding: 1% 0% 1% 6%;;width: 92%;height: 12%;" placeholder="Categoria">
                                 <input name="link" style="font-size: 70%;margin-top: 8px;box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);padding: 1% 0% 1% 6%;;width: 92%;height: 12%;" placeholder="Link Google Fotos">
                                 </div>
@@ -113,7 +111,7 @@
                                     <input name="custo" style="font-size:62%;margin-top: 5px; box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);padding-left: 5%;width: 72%;height: 30px;" placeholder="Custo">
                                     <input name="lance" style="font-size: 62%;margin-top: 5px; box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);padding-left: 5%;width: 72%;height: 30px;"  placeholder="Lance inicial"><br>
                                     <input name="estoque" style="font-size: 62%;margin-top: 5px; box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);padding-left: 5%;width: 72%;height: 30px;"  placeholder="Estoque"><br>
-                                    
+                                    <input name="fornecedor" style="font-size: 62%;margin-top: 5px; box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);padding-left: 5%;width: 72%;height: 30px;"  placeholder="Fornecedor"><br>
                                 </div>
                                 <div style="border-radius: 10px;margin-top:16px;box-shadow: 2px 3px 3px 0px rgb(203 203 203); width: 100%;font-size: 17px;text-align: center;">
                                     <span style="font-size:75%"> Pode ser ofertada sem lance inicial? </span> <br>

@@ -17,25 +17,26 @@
         $row = mysqli_fetch_assoc($resultado);
         $login_pesquisa = $row['login'];
         $codigo_pesquisa = $row['codigo'];
-        echo "<div class='row container'> 
-            <form class='col s12' action='../telas/perfil.php' method='POST'>
+        $servidor = $_SERVER['PHP_SELF'];
+        echo "<div class='row container' style='margin-right: auto; margin-left: auto;'> 
+            <form class='col s12' action='$servidor' method='POST'>
                 
                 <h4 align='center'> Editar usuário $login_pesquisa </h4>
                 
                 <div class= 'row'>
                     <div class='input-field inline col s6 offset-s3'>
-                        <input placeholder='Nome' name='nome' type='text'>
+                        <input style='width:65%' placeholder='Nome' name='nome' type='text'>
                     </div>
                 </div>
                 
                 <div class='row'>
                     <div class='input-field inline col s6 offset-s3'>
-                    <input placeholder='Senha' name='senha' type='password'>
+                    <input  style='width:65%' placeholder='Senha' name='senha' type='password'>
                     </div>
                 </div>
                 <input name='id_usuario' style='display:none' value='$codigo_pesquisa'>
-                <button type='submit' name='editar' class='col s6 offset-s3 btn waves-effect #f57f17 black darken-4'>
-                Editar  <i class='material-icons right'>send</i> </button>
+                <button style='color:white'type='submit' name='editar' class='col s4 offset-s4 btn waves-effect #f57f17 black darken-4'>
+				Editar  </button>
             </form>";
     else:
          if($login_pesquisa == $excecao):

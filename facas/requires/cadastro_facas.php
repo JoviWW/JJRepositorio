@@ -18,10 +18,11 @@
         $custo = intval($_POST['custo']);
         $lanceInicial = intval($_POST['lance']);
         $estoque = intval($_POST['estoque']);
+        $fornecedor =   mysqli_escape_string($connect, $_POST['fornecedor']);
 
         $ofertaSemLance = mysqli_escape_string($connect, $_POST['ofertaSemLance']);
 
-        if(empty($imagem) or empty($nome) or empty($descricao) or empty($link) or empty($custo) or empty($lanceInicial) or empty($estoque) or empty($ofertaSemLance)):
+        if(empty($imagem) or empty($fornecedor) or empty($nome) or empty($descricao) or empty($link) or empty($custo) or empty($lanceInicial) or empty($estoque) or empty($ofertaSemLance)):
             
             echo "<script>alert('Preencha todos os campos');</script>";
             
@@ -45,7 +46,7 @@
             if(mysqli_num_rows($resultado) > 0): //se houver o tipo especificado
                 $consulta = mysqli_fetch_assoc($resultado);
                 $cod_tipofaca = $consulta["codigo"];
-                $sql = "INSERT INTO faca (estoquedisponivel,lanceInicial,nome,descricao,img,linkFotos,permitir_planceinicial,tipofaca) VALUES ('$estoque','$lanceInicial','$nome','$descricao','$imagem','$link','$ofertaSemLance','$cod_tipofaca')";
+                $sql = "INSERT INTO faca (estoquedisponivel,lanceInicial,nome,descricao,img,linkFotos,permitir_planceinicial,tipofaca,fornecedor) VALUES ('$estoque','$lanceInicial','$nome','$descricao','$imagem','$link','$ofertaSemLance','$cod_tipofaca','$fornecedor')";
                 $resultado = mysqli_query($connect,$sql);
 
                 if ($resultado):
@@ -64,21 +65,13 @@
 
                 if($resultado):
                     $cod_tipofaca = $connect->insert_id;
-                    $sql = "INSERT INTO faca (estoquedisponivel,lanceInicial,nome,descricao,img,linkFotos,permitir_planceinicial,tipofaca) VALUES ('$estoque','$lanceInicial','$nome','$descricao','$imagem','$link','$ofertaSemLance','$cod_tipofaca')";
+                    $sql = "INSERT INTO faca (estoquedisponivel,lanceInicial,nome,descricao,img,linkFotos,permitir_planceinicial,tipofaca,fornecedor) VALUES ('$estoque','$lanceInicial','$nome','$descricao','$imagem','$link','$ofertaSemLance','$cod_tipofaca','$fornecedor')";
                     $resultado = mysqli_query($connect,$sql);
 
                     if ($resultado):
                         echo "<script>alert('Cadastro realizado!');</script>";
                         mysqli_close($connect);
-                    else:
-                        $erro = mysqli_error($connect);
-                        echo $erro;
                     endif;
-
-                else:   
-                    $erro = mysqli_error($connect);
-                    echo $erro;
-
                 endif;
             endif;
         endif;
