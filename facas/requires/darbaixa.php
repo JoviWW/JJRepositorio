@@ -1,4 +1,7 @@
 <?php
+
+///O erro se trata de usar duas querys na mesma conexão, mysqli_next_result($connect) aceita uma nova query, mas caso dê errado tente
+//fechar a conexão e abrir uma nova para cada query
     include("../requires/conexao.php");
     if($_POST):
         echo "<pre>";
@@ -23,9 +26,11 @@
                         else:
                             $obs = "";
                         endif;
+                        mysqli_next_result($connect);
                         $resultado = mysqli_query($connect,"CALL ConfirmarCompra('$codigo_processamento','$comprador_processamento','$valor_venda','$obs')");
                     endif;
                 elseif($baixa == 'cancela'):
+                    mysqli_next_result($connect);
                     $codigo_processamento = $_POST["codigo".$codigo];
                     $resultado = mysqli_query($connect,"CALL cancelarBaixa('$codigo_processamento','$codigo_faca')");
                     echo mysqli_error($connect);
