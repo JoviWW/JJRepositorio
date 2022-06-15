@@ -36,3 +36,12 @@ Select * from operacao where concluida = 0 and codigofaca = incodigofaca and cod
 END $
 DELIMITER ;
 
+DELIMITER $
+CREATE PROCEDURE `cancelarBaixa`(IN `incodigoperacao` INT, IN `incodigofaca`  )
+BEGIN
+DELETE FROM operacao where codigo = incodigoperacao;
+UPDATE faca SET estoquedisponivel = estoquedisponivel+1 where codigo = incodigofaca;
+UPDATE faca SET estoqueprocessamento = estoqueprocessamento-1 where codigo = incodigofaca;
+END $
+DELIMITER ;
+
