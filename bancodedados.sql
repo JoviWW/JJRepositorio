@@ -36,6 +36,7 @@ valorFinal FLOAT  ,
 observacao TEXT,
 codigoFaca INT NOT NULL,
 codigoUsuario INT NOT NULL,
+pagamento VARCHAR(55),
 concluida BOOL DEFAULT FALSE,
 planceinicial BOOL DEFAULT TRUE,
     CONSTRAINT fk_vendedor
