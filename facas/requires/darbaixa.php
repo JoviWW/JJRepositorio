@@ -21,13 +21,14 @@
                         $codigo_processamento = $_POST["codigo".$codigo];
                         $comprador_processamento = $_POST["comprador".$codigo];
                         $valor_venda = $_POST["valor_venda".$codigo];
+                        $metodo_pag = $_POST["metodopag".$codigo];
                         if (isset($_POST["obs".$codigo])):
                             $obs = $_POST["obs".$codigo];
                         else:
                             $obs = "";
                         endif;
                         mysqli_next_result($connect);
-                        $resultado = mysqli_query($connect,"CALL ConfirmarCompra('$codigo_processamento','$comprador_processamento','$valor_venda','$obs')");
+                        $resultado = mysqli_query($connect,"CALL ConfirmarCompra('$codigo_processamento','$comprador_processamento','$valor_venda','$obs', '$metodo_pag')");
                     endif;
                 elseif($baixa == 'cancela'):
                     mysqli_next_result($connect);

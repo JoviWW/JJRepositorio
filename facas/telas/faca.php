@@ -121,7 +121,18 @@
                                                <input name='codigo$codigo' value='$codigo' style='display:none'>
                                                <input name='comprador$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Nome do comprador'>
                                                <input name='valor_venda$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Valor da venda'>
+                                                <select name='metodopag$codigo' id='pag' style='font-size: 50%;width: 13%;height: 25%; margin: 5px; display: inline-block'>
+                                                    <option value='' disabled selected>Método de Pagamento</option>
+                                                    <option value='Cartão de Crédito'>Cartão de Crédito</option>
+                                                    <option value='Cartão de Débito'>Cartão de Débito</option>
+                                                    <option value='Pix'>Pix</option>
+                                                    <option value='Dinheiro'>Dinheiro</option>
+                                                
+                                    
+                                                </select>
+                            
                                                <input name='obs$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Obs (opcional)'>
+
                                                <ul style='margin: 0% 5% 0px 0px;' class='right'>
                                                    <li> <input style='position: relative;opacity: 1;pointer-events: all;' type='radio' name='baixa$codigo' value='confirma'>  <i class= 'tiny material-icons'> check </i> </li>
                                                    <li> <input style='position: relative;opacity: 1;pointer-events: all;' type='radio' name='baixa$codigo' value='cancela'>  <i class= 'tiny material-icons'> close </i> </li>
