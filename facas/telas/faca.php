@@ -69,6 +69,7 @@
                                        <input name='quantidade_separar' style='height: 7%;font-size: 10px;width: 57%;text-align: center;' placeholder='Quantidade para leiloar'><br>
                                        <input name='codigo_faca' value='$codigo_faca' style='display:none'>
                                        <input name='codigo_usuario' value='$codigo_usuario' style='display:none'>
+                                       <input name='permitir_planceinicial' value='$permitir_planceinicial_faca' style='display:none'>
                                        ";
                                            if($permitir_planceinicial_faca == 1){
                                                echo "<span style='font-size: 80%'>Ofertar sem lance inicial: R$$lanceInicial_faca</span><br>
@@ -121,7 +122,7 @@
                                                <input name='codigo$codigo' value='$codigo' style='display:none'>
                                                <input name='comprador$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Nome do comprador'>
                                                <input name='valor_venda$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Valor da venda'>
-                                                <select name='metodopag$codigo' id='pag' style='font-size: 50%;width: 13%;height: 25%; margin: 5px; display: inline-block'>
+                                                <select name='metodopag$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px; display: inline-block'>
                                                     <option value='' disabled selected>Método de Pagamento</option>
                                                     <option value='Cartão de Crédito'>Cartão de Crédito</option>
                                                     <option value='Cartão de Débito'>Cartão de Débito</option>
