@@ -32,9 +32,9 @@ DELIMITER ;
 
 
 DELIMITER $
-CREATE PROCEDURE `ConfirmarCompra`(IN `codigoBaixa` INT, IN `incomprador` VARCHAR(55), IN `invalorfinal` FLOAT, IN `inobservacao` TEXT)
+CREATE PROCEDURE `ConfirmarCompra`(IN `codigoBaixa` INT, IN `incomprador` VARCHAR(55), IN `invalorfinal` FLOAT, IN `inobservacao` TEXT, IN inmetodopag VARCHAR(55))
 BEGIN
-UPDATE operacao SET data_finalBaixa = CURRENT_TIMESTAMP(), comprador = incomprador, valorfinal = invalorfinal, observacao = inobservacao, concluida = 1 WHERE codigo = codigoBaixa;
+UPDATE operacao SET data_finalBaixa = CURRENT_TIMESTAMP(), comprador = incomprador, valorfinal = invalorfinal, observacao = inobservacao, pagamento = inmetodopag concluida = 1 WHERE codigo = codigoBaixa;
 UPDATE faca f inner join operacao o on(o.codigoFaca = f.codigo) SET estoqueprocessamento = estoqueprocessamento-1 WHERE o.codigo = codigoBaixa;
 END $
 DELIMITER ;
@@ -55,7 +55,7 @@ END $
 DELIMITER ;
 
 DELIMITER $
-CREATE PROCEDURE `cancelarBaixa`(IN `incodigoperacao` INT, IN `incodigofaca`  )
+CREATE PROCEDURE `cancelarBaixa`(IN `incodigoperacao` INT, IN `incodigofaca` INT  )
 BEGIN
 DELETE FROM operacao where codigo = incodigoperacao;
 UPDATE faca SET estoquedisponivel = estoquedisponivel+1 where codigo = incodigofaca;
