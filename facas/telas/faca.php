@@ -106,43 +106,46 @@
        
                            <div style='width: 100%;max-height: 65%;overflow-x:hidden'>
                            <form action='../requires/darbaixa.php' method='POST'>";
-                           $resultado  = mysqli_query($connect,"CALL getFacasEmProcessamentoUsuario('$codigo_faca','$codigo_usuario')");
-                           while ($row = mysqli_fetch_assoc($resultado)):
-                            $codigo = $row['codigo'];
-                            $data = $row['data_inicioBaixa'];
-                            echo "
-                               <div style='width:100%'>
-                                   <div style='border:solid;border-width:1px;width:80%;margin-left:10%;height: 25%;'> 
-                                       <div class='left'style='border:solid;border-width:1px;height: 60px;width: 60px;margin: 1.7% 2% 0% 2%;'> <img style='width: 100%;height: 100%;' src='$img'> </div>
+                           $result = mysqli_query($connect,"SELECT * FROM `operacao` WHERE codigoUsuario = '$codigo_usuario' AND `concluida` = 0");
+                           if(mysqli_num_rows($result) > 0):
+                            $resultado  = mysqli_query($connect,"CALL getFacasEmProcessamentoUsuario('$codigo_faca','$codigo_usuario')");
+                            while ($row = mysqli_fetch_assoc($resultado)):
+                                $codigo = $row['codigo'];
+                                $data = $row['data_inicioBaixa'];
+                                echo "
+                                <div style='width:100%'>
+                                    <div style='border:solid;border-width:1px;width:80%;margin-left:10%;height: 25%;'> 
+                                        <div class='left'style='border:solid;border-width:1px;height: 60px;width: 60px;margin: 1.7% 2% 0% 2%;'> <img style='width: 100%;height: 100%;' src='$img'> </div>
+                                            
+                                            <div>
+                                                <p style='font-size: 80%;margin: 5px 0px 0px 17%;'> Processamento #$codigo ($data) </p>
+                                                <input name='codigo_usuario' value='$codigo_usuario' style='display:none'>
+                                                <input name='codigo_faca' value='$codigo_faca' style='display:none'>
+                                                <input name='codigo$codigo' value='$codigo' style='display:none'>
+                                                <input name='comprador$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Nome do comprador'>
+                                                <input name='valor_venda$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Valor da venda'>
+                                                    <select name='metodopag$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px; display: inline-block'>
+                                                        <option value='' disabled selected>Método de Pagamento</option>
+                                                        <option value='Cartão de Crédito'>Cartão de Crédito</option>
+                                                        <option value='Cartão de Débito'>Cartão de Débito</option>
+                                                        <option value='Pix'>Pix</option>
+                                                        <option value='Dinheiro'>Dinheiro</option>
+                                                    
                                         
-                                           <div>
-                                               <p style='font-size: 80%;margin: 5px 0px 0px 17%;'> Processamento #$codigo ($data) </p>
-                                               <input name='codigo_usuario' value='$codigo_usuario' style='display:none'>
-                                               <input name='codigo_faca' value='$codigo_faca' style='display:none'>
-                                               <input name='codigo$codigo' value='$codigo' style='display:none'>
-                                               <input name='comprador$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Nome do comprador'>
-                                               <input name='valor_venda$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Valor da venda'>
-                                                <select name='metodopag$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px; display: inline-block'>
-                                                    <option value='' disabled selected>Método de Pagamento</option>
-                                                    <option value='Cartão de Crédito'>Cartão de Crédito</option>
-                                                    <option value='Cartão de Débito'>Cartão de Débito</option>
-                                                    <option value='Pix'>Pix</option>
-                                                    <option value='Dinheiro'>Dinheiro</option>
-                                                
-                                    
-                                                </select>
-                            
-                                               <input name='obs$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Obs (opcional)'>
+                                                    </select>
+                                
+                                                <input name='obs$codigo' style='font-size: 50%;width: 13%;height: 25%; margin: 5px' placeholder='Obs (opcional)'>
 
-                                               <ul style='margin: 0% 5% 0px 0px;' class='right'>
-                                                   <li> <input style='position: relative;opacity: 1;pointer-events: all;' type='radio' name='baixa$codigo' value='confirma'>  <i class= 'tiny material-icons'> check </i> </li>
-                                                   <li> <input style='position: relative;opacity: 1;pointer-events: all;' type='radio' name='baixa$codigo' value='cancela'>  <i class= 'tiny material-icons'> close </i> </li>
-                                               </ul>
-                                           </div>
-                                       
-                                   </div>
-                               </div> ";
-                           endwhile;
+                                                <ul style='margin: 0% 5% 0px 0px;' class='right'>
+                                                    <li> <input style='position: relative;opacity: 1;pointer-events: all;' type='radio' name='baixa$codigo' value='confirma'>  <i class= 'tiny material-icons'> check </i> </li>
+                                                    <li> <input style='position: relative;opacity: 1;pointer-events: all;' type='radio' name='baixa$codigo' value='cancela'>  <i class= 'tiny material-icons'> close </i> </li>
+                                                </ul>
+                                            </div>
+                                        
+                                    </div>
+                                </div> ";
+                            endwhile;
+                           endif;
                            echo "
                            <div style='display:flex;justify-content:center;' > 
                             <button type='submit' class='btn' style='border-radius: 5%;color: white;background-color:black'> Confirmar </button>

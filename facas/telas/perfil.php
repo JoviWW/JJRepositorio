@@ -59,7 +59,7 @@
 					  <input style='width:65%' placeholder="Senha" name="senha" type="password">
 					</div>
 				</div>
-                <input name='id_usuario' style='display:none' value='<?php echo $dados['codigo'];?>'>
+                <input name='id_usuario' style='display:none' value='<?php echo $id_usuario;?>'>
 				<button style='color:white'type="submit" name="editar" class="col s8 offset-s2 btn waves-effect #f57f17 black darken-4">
 				Editar  </button>
 			</form>
@@ -96,15 +96,17 @@
                     </div>
                 </form>";
                     
-                    if(isset($_POST['editar'])): //checando se o usuário clicou em editar
-                        require("../requires/editar.php");
-                    endif;
+                    
                     echo"
                 </div>";
             endif;
         ?>
 
         <?php
+            if(isset($_POST['editar'])): //checando se o usuário clicou em editar
+                require("../requires/editar.php");
+            endif;
+
             if(isset($_GET['pesquisa'])): //checando se o usuário pesquisou
                 require("../requires/pesquisa.php");
             endif;

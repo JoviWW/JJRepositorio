@@ -1,7 +1,7 @@
 <?php
 
     include("../requires/conexao.php");
-    
+    echo "oi";
     $id_usuario_editar = $_POST['id_usuario'];
     $resultados = Array();
 

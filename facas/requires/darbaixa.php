@@ -4,13 +4,9 @@
 //fechar a conexão e abrir uma nova para cada query
     include("../requires/conexao.php");
     if($_POST):
-        echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
         $codigo_faca = $_POST['codigo_faca'];
         $codigo_usuario = $_POST['codigo_usuario'];
         $result = mysqli_query($connect,"CALL getFacasEmProcessamentoUsuario('$codigo_faca','$codigo_usuario')");
-        print_r($result);
         while ($row = mysqli_fetch_assoc($result)):
             $codigo = $row['codigo'];
             if(isset($_POST["baixa".$codigo])):
@@ -34,8 +30,6 @@
                     mysqli_next_result($connect);
                     $codigo_processamento = $_POST["codigo".$codigo];
                     $resultado = mysqli_query($connect,"CALL cancelarBaixa('$codigo_processamento','$codigo_faca')");
-                    echo mysqli_error($connect);
-                    print_r($resultado);
                 endif;
             endif;
             
@@ -43,4 +37,6 @@
     else:
         echo "Sem info";
     endif;
+
+    header("Location: ../telas/faca.php?faca=".$codigo_faca);
 ?>
