@@ -2,7 +2,7 @@
     
     
     session_start();
-
+    
     if(isset($_SESSION['logado'])):
         if($_SESSION['logado']):
             $nome_usuario = $_SESSION['nome'];
@@ -83,7 +83,7 @@
                             echo "<div id='popup2' style='margin-top: -60px;left:2%;position: fixed;z-index:9999;height:400px;width:95%;background-color: rgb(255, 255, 255);'>
                             <button style='cursor:pointer;border:none;margin: 20px;color: black;padding-top: 0;' onclick='fechar2()'class='right btn-tiny white'> <i class= 'material-icons' > close </i> </button>
                             <div id='content' style='margin-top: 20px;'>
-                                <div style='font-size: 105%;margin-left:10%' class='center'> Facas em leilão </div>
+                                <div style='font-size: 105%;margin-left:70px' class='center'> Facas em leilão </div>
             
                                 <div style='width: 100%;max-height: 65%;overflow-x:hidden'>
                                 <form action='../requires/darbaixa.php' method='POST'>";
@@ -131,11 +131,42 @@
                 endif;
             endif;
         ?>
+
+        <?php
+        require("../requires/conexao.php");
+        $result = mysqli_query($connect,"SELECT link FROM divulgacao");
+        $fetch = mysqli_fetch_assoc($result);
+        $link_divulgacao = $fetch['link'];
+        ?>
+
         <div name='conteudo'>
             <div id='divulgacao'>
-                 Conheça nosso grupo de leilão!<br><a href="#">Clique aqui</a>
+                 Conheça nosso grupo de leilão!<br><a href="<?php echo $link_divulgacao; ?>">Clique aqui</a>
+                 <br>
+                 <?php
+                    $servidor = $_SERVER['PHP_SELF'];
+                    if(isset($_SESSION['logado'])):
+                        if($_SESSION['logado']):
+                            if($admin == 1):
+                                echo "
+                                <button onclick='mudaLink()' style='cursor:pointer;border: none;background: none;color: #15a2e7;'><i class='tiny material-icons'>border_color</i></button>
+                                <form id='input_link' style='visibility:hidden' action='$servidor' method='GET'>
+                                    <input style='height: 10px;width: 70%;max-width: 60px;font-size: 7px;' name='link' type='text' placeholder='Link'>
+                                    <button class='tiny' style='padding:0;color:grey;border:none;background:none;' type='submit' name='edita_link'> > </button>
+                                </form>";
+                            endif;                           
+                        endif;
+                    endif;
+                 ?>
+                 
             </div>
         <?php
+
+            if(isset($_GET['edita_link'])):
+                $link_divulgacao_mudar = $_GET['link'];
+                mysqli_query($connect,"UPDATE divulgacao SET link = '$link_divulgacao_mudar'");
+                echo "<script> voltar() </script>";
+            endif;
 
             if(isset($_SESSION['logado'])):
                 if($_SESSION['logado']):
@@ -196,4 +227,10 @@
             document.getElementById("transp").style.visibility = "hidden"
             document.getElementById("popup2").style.visibility = "hidden"
         }
+    
+    ////////////////////////////
+
+    function mudaLink(){
+        document.getElementById("input_link").style.visibility = "visible"
+    }
 </script>

@@ -102,7 +102,7 @@
                    <div id='popup2' style='margin-top: -60px;left:2%;position: fixed;z-index:9999;height:400px;width:95%;background-color: rgb(255, 255, 255);'>
                        <button style='cursor:pointer;border:none;margin: 20px;color: black;padding-top: 0;' onclick='fechar2()'class='right btn-tiny white'> <i class= 'material-icons' > close </i> </button>
                        <div id='content' style='margin-top: 20px;'>
-                           <div style='font-size: 105%;margin-left:10%' class='center'> Facas em leilão </div>
+                           <div style='font-size: 105%;margin-left:70px' class='center'> Facas em leilão </div>
        
                            <div style='width: 100%;max-height: 65%;overflow-x:hidden'>
                            <form action='../requires/darbaixa.php' method='POST'>";
