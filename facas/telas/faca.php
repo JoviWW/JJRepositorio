@@ -281,9 +281,6 @@
 
         findSelected();
         
-        
-        
-        
 
         /// Popup do leilão /// 
         function popup1(){

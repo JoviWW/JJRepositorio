@@ -1,6 +1,7 @@
 
 
 <?php
+
     session_start();
     if($_SESSION['logado'] != true):
         header('Location: index.php');
@@ -43,6 +44,9 @@
 ?>
 
 	<main style="height:500px;margin-top: 100px;">
+    <a href="..\requires\exportar.php">
+    <button type="button" class="btn">Exportar para o Excel</button>
+    </a>
 		<div class="row container" style="margin-right: auto; margin-left: auto;border:solid 1px;width: 50%;margin-top:15px">
 			<form class="col s12" action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
 				
