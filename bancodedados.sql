@@ -53,4 +53,13 @@ planceinicial BOOL DEFAULT TRUE,
 CREATE TABLE IF NOT EXISTS tipofaca(
    codigo INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nome VARCHAR(55));
+    
+DROP TABLE IF EXISTS `divulgacao`;
+CREATE TABLE IF NOT EXISTS `divulgacao` (
+  `link` text
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `divulgacao` (`link`) VALUES
+('https://api.whatsapp.com/send?l=pt&amp;phone=555596387410');
+COMMIT;
 
