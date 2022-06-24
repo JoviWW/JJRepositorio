@@ -43,10 +43,7 @@
     $dados = mysqli_fetch_assoc($resultado);
 ?>
 
-	<main style="height:500px;margin-top: 100px;">
-    <a href="..\requires\exportar.php">
-    <button type="button" class="btn">Exportar para o Excel</button>
-    </a>
+	<main style="height:500px;margin-top: 100px;display: flex;flex-direction: column;align-items: center;">
 		<div class="row container" style="margin-right: auto; margin-left: auto;border:solid 1px;width: 50%;margin-top:15px">
 			<form class="col s12" action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
 				
@@ -106,6 +103,8 @@
             endif;
         ?>
 
+    
+
         <?php
             if(isset($_POST['editar'])): //checando se o usuário clicou em editar
                 require("../requires/editar.php");
@@ -115,8 +114,10 @@
                 require("../requires/pesquisa.php");
             endif;
         ?>
-
-        
+    <a style='margin-top: 10px;background-color:green;'href="..\requires\exportar.php"> 
+        <button style='color:white;'type="button" class="btn">Exportar para o Excel</button>
+    </a>
+    
 	</main>
 
 </html>

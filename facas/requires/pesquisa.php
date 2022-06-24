@@ -37,7 +37,8 @@
                 <input name='id_usuario' style='display:none' value='$codigo_pesquisa'>
                 <button style='color:white'type='submit' name='editar' class='col s4 offset-s4 btn waves-effect #f57f17 black darken-4'>
 				Editar  </button>
-            </form>";
+            </form>
+            </div>";
     else:
          if($login_pesquisa == $excecao):
         echo "<div style='display:flex;justify-content:center'> <p style='color:red'> Você está procurando por si mesmo! </p> </div>";
